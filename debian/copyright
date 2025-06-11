@@ -1,9 +1,100 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+X-Format: https://dep.debian.net/deps/dep5
+Upstream-Name: lrzip
+Upstream-Contact: Con Kolivas <kernel@kolivas.org>
+Source: https://github.com/ckolivas/lrzip
+X-Upstream-Vcs-Git: git://github.com/ckolivas/lrzip.git
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
+Copyright:
+ 2006-2011 Con Kolivas <kernel@kolivas.org>
+ 2007-2009 Peter Hyman <pete@peterhyman.com>
+ 1998 Andrew Tridgell
+License: GPL-2+
+
+Files: runzip.c rzip.c
+Copyright:
+ 2006-2009 Con Kolivas <kernel@kolivas.org>
+ 1998-2003 Andrew Tridgell
+License: GPL-2+
+
+Files: util.c
+Copyright:
+ 1998 Andrew Tridgell
+License: GPL-2+
+
+Files: lzma/*
+Copyright:
+ 2006-2009 Con Kolivas <kernel@kolivas.org>
+ Oleg I. Vdovikin <oleg@cs.msu.su>
+License: GPL-3+
+X-Note:
+ The original LZMA is public domain. Con Kolivas has extended it
+ and released changes under GPL-3+.
+ .
+ The ASM code compiling has been disables in this debian
+ package, so file ./C/7zCrcT8.c is not used.
+X-License-Comment:
+ [from https://www.7-zip.org/sdk.html]
+ "License: LZMA SDK is placed in the public domain."
+ .
+ [from lzma/README]
+ JANUARY 2009
+ .
+ This is an updated LZMA library wrapper provided with SDK 4.63.
+ The SDK is available here: https://www.7-zip.org/sdk.html.
+ .
+ It is written completely in C and compilation and integration
+ is much simpler. To enable multithreading support, compile
+ with COMPRESS_MF_MT and _REENTRANT defined. MF=Match Finder,
+ MT=Multi Thread. In addition, link in pthread. This is default
+ behavior in lrzip. For single thread support, remove these
+ defines in the Makefile.
+ .
+ Some additional documentation is provided from the SDK.
+ .
+ File ./C/7zCrcT8.c is added to support ASM CRC code. Taken
+ from p7zip.org.
+ .
+ Original README text follows.
+ .
+ This is a zlib like library for the lzma encoder/decoder originally created
+ by Oleg I. Vdovikin <oleg@cs.msu.su> and modified for lrzip by Con Kolivas
+ <kernel@kolivas.org>
+ It is based on a stripped down source tree of the lzma SDK by Igor Pavlov.
+ https://www.7-zip.org
+ .
+ You can build a standalone library called liblzma.a which gives functions
+ equivalent to compress2() and uncompress() called lzma_compress() and
+ lzma_uncompress().
+ .
+ Updated for recent SDK 4.57 and added assembler routines for crc
+ using p7zip.org variant by Peter Hyman
+
+Files: lzma/C/windows.h
+Copyright: Anders Norlander <anorland@hem2.passagen.se>
+License: LGPL-2.1
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License as published by the Free
+ Software Foundation; either version 2 of the License, or (at your option) any
+ later version.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU Lesser General Public License along
+ with this library; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
+ Comment: On Debian systems, the LGPL version 2 license can be found at
+ `/usr/share/common-licenses/LGPL-2.1'.
+
+Files: debian/*
+Copyright: 2014- Laszlo Boszormenyi (GCS) <gcs@debian.org>,
+ 2010-2012 Jari Aalto <jari.aalto@cante.net>
+License: GPL-2+
+
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -12,11 +103,28 @@ License: GPL-2+
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
  .
  On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ Public License can be found in "/usr/share/common-licenses/GPL-2".
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in "/usr/share/common-licenses/GPL-3".

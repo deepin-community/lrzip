@@ -1,0 +1,2 @@
+version=4
+http://ck.kolivas.org/apps/lrzip/ lrzip-(?:[_\-]v?|)(\d\S+)@ARCHIVE_EXT@ debian debian/repack.sh
