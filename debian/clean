@@ -1,0 +1,7 @@
+debian/*.1
+*.o
+lrzip
+config.status
+config.log
+config.h
+Makefile

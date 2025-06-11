@@ -1,4 +1,41 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PACKAGE = lrzip
+PKGDIR	= $(CURDIR)/debian/$(PACKAGE)
+DOCDIR	= $(PKGDIR)/usr/share/doc/lrzip
+
+include /usr/share/dpkg/buildflags.mk
+CFLAGS	+= -Wall -pedantic
+LDFLAGS += -Wl,--as-needed
+
+override_dh_auto_configure:
+	# With pristine tarballs from version control, there is no ./configure
+	[ -f configure ] || autoreconf -vfi
+	dh_auto_configure -- LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)"
+
+override_dh_auto_build:
+	$(MAKE) NO_ASSEMBLER=1
+
+override_dh_auto_install:
+	$(MAKE) DESTDIR=$(PKGDIR) \
+		INSTALL_DOC=/usr/share/doc/lrzip \
+		INSTALL_DOC_LZMA=/usr/share/doc/lrzip/lzma \
+		install
+	# Remove extra file
+	rm -f $(DOCDIR)/README.Assembler
+	# already in package bash-completion
+	rm -rf $(PKGDIR)/etc
+
+override_dh_dwz:
+	@echo dh_dwz NOP due to being buggy
 
 %:
-	dh $@
+	dh $@ --with autoreconf
+
+.PHONY: override_dh_auto_configure override_dh_auto_build \
+	override_dh_auto_install override_dh_dwz
+# End of file
